@@ -1,0 +1,20 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/lib/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/data/*
+  Cache-Control: public, max-age=86400
+
+# Must come after /data/*: for the same header the later matching rule wins.
+/data/version.json
+  Cache-Control: no-cache
+
+# Past seasons (built once; requests carry ?v=<build id> like data/)
+/seasons/*
+  Cache-Control: public, max-age=86400
+
+/seasons/2025/version.json
+  Cache-Control: no-cache
